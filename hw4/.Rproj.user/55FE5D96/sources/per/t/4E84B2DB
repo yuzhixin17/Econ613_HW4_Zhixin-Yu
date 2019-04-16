@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1555085451442.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "4E84B2DB",
+    "lastKnownWriteTime" : 3419473789575321445,
+    "last_content_update" : 1555085451442,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "1B92175A",
+        "caption" : "Fdiff1",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=Fdiff1&cache_key=1B92175A",
+        "displayedObservations" : 17920,
+        "environment" : "",
+        "object" : "Fdiff1",
+        "preview" : 0,
+        "totalObservations" : 17920,
+        "variables" : 4
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1555088707154.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "3B63CD3E",
+    "lastKnownWriteTime" : 7308604914264011873,
+    "last_content_update" : 1555088707154,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "F9A4AD24",
+        "caption" : "alpha",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=alpha&cache_key=F9A4AD24",
+        "displayedObservations" : 100,
+        "environment" : "",
+        "object" : "alpha",
+        "preview" : 0,
+        "totalObservations" : 100,
+        "variables" : 1
+    },
+    "relative_order" : 12,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
