@@ -112,5 +112,32 @@ beta_IFE_iv
 # [1]  1.836182726 -0.025955048  0.007224095  0.002077072
 # [5] -0.243323856  0.003692090
 
-# maybe errors are correlated over t
-# we can try heteroskedastic to calculate standard errors
+# The standard errors in the previous may not be correctly calculated, because those error terms may correlated across individual fixed effect and are not i.i.d
+# In order to robust the result, we should use bootstrap and sample for each individual.
+
+
+# create an empty matrix boot49
+boot49 <- NULL
+# write a for loop to calculate each of 49 sample's standard errors
+for(i in 1:49){
+    # sample rows from datset with replecament
+    dat49 <- sample(1:2178,100)
+    ktobias49 <- ktobias[ktobias[,1]%in%dat49,]
+    # form new X
+    X49 <- as.matrix(ktobias49[,c(2,4)])
+    # form new Y
+    Y49 <- as.matrix(ktobias49[,3])
+    boot_beta <- optim(c(0,0), probit, x=X49, y=Y49)$par
+    # run regression
+    Mean49 <- aggregate(cbind(LOGWAGE,EDUC,POTEXPER) ~ PERSONID, data = ktobias49, mean)
+    alpha49 <- as.matrix(Mean49[,2] - (Mean49[,3]*boot_beta[1] + Mean49[,4]*boot_beta[2]))
+    ktobias49 <- ktobias49[!duplicated(ktobias49$PERSONID),]
+    X49_2 <- as.matrix(ktobias49[,6:10])
+    boot_beta_iv <- as.matrix(lm(alpha49 ~ X49_2)$coefficient)
+    # save each time result
+    boot49 <- rbind(boot49,t(boot_beta_iv))
+}    
+# calculate stadard errors
+boot49_sd <- as.vector(c(sd(boot49[,1]),sd(boot49[,2]),sd(boot49[,3]),sd(boot49[,4]),sd(boot49[,5]),sd(boot49[,6])))
+boot49_sd
+# [1] 0.15416923 0.05132883 0.01992070 0.01486677 0.12357277 0.01683718
